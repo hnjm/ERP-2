@@ -1,0 +1,98 @@
+﻿@using System.Text
+@model ERP.Models.ViewModel.Users.UsersDetailsViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Roles)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                if (Model.Roles.Length > 0)
+                {
+                    <label>[ </label>
+
+                    var count = 0;
+
+                    while (count != Model.Roles.Length)
+                    {
+                        <a asp-controller="Roles" asp-action="Details" asp-route-id="@Model.Roles[count].Id">@Model.Roles[count].Id</a>
+
+                        if (count == Model.Roles.Length - 1)
+                        {
+                            <label> ]</label>
+                        }
+                        else
+                        {
+                            <label> + </label>
+                        }
+
+                        count++;
+                    }
+                }
+                else
+                {
+                    <label>No Role</label>
+                }
+
+                <a asp-controller="UsersRoleManager" asp-action="ManageRole">Manage Role</a>
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Claims)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                if (Model.Claims.Length > 0)
+                {
+                    <label>[ </label>
+
+                    var count = 0;
+
+                    while (count != Model.Claims.Length)
+                    {
+                        <a asp-controller="Claims" asp-action="Details" asp-route-id="@Model.Claims[count].Id">@Model.Claims[count].Id</a>
+
+                        if (count == Model.Claims.Length - 1)
+                        {
+                            <label> ]</label>
+                        }
+                        else
+                        {
+                            <label> + </label>
+                        }
+
+                        count++;
+                    }
+                }
+                else
+                {
+                    <label>No Claim</label>
+                }
+
+                <a asp-controller="UsersClaimManager" asp-action="ManageClaim">Manage Claim</a>
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    <a asp-action="GetUsers">Back to List</a>
+</div>
