@@ -5,8 +5,6 @@ namespace ERP.Models.ViewModel.Claims
 {
     public class SelectUserForClaimModel
     {
-        public string? Id { get; set; }
-
         public string Type { get; set; }
 
         public string Value { get; set; }
@@ -18,9 +16,8 @@ namespace ERP.Models.ViewModel.Claims
 
         }
 
-        public SelectUserForClaimModel(ClaimDbModel claim, IDataProtector protector)
+        public SelectUserForClaimModel(ClaimDbModel claim)
         {
-            Id = protector.Protect(claim.Id);
             Type = claim.Type;
             Value = claim.Value;
         }

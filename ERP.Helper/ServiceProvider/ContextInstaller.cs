@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace ERP.Helper.ServiceProvider
 {
-    public class ContextInstaller:IServiceProvider
+    public class ContextInstaller : IServiceProvider
     {
         public void Configure(IServiceCollection services, IConfiguration configuration)
         {

@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ERP.DBAccess.Context;
+﻿using ERP.DBAccess.Context;
 using ERP.Models.ViewModel.Claims;
 using ERP.Models.ViewModel.Roles;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace ERP.Helper.ExtensionMethod
 {
@@ -37,7 +34,7 @@ namespace ERP.Helper.ExtensionMethod
         {
             var claims = await context.UserClaims
                 .Where(x => x.UserId == id)
-                .Select(x => x.ClaimType)
+                .Select(x => new { x.ClaimType, x.ClaimValue })
                 .ToArrayAsync();
 
             var claimsView = new ClaimsViewModel[claims.Length];
@@ -45,12 +42,21 @@ namespace ERP.Helper.ExtensionMethod
             var count = 0;
             while (count != claimsView.Length)
             {
-                claimsView[count] = new ClaimsViewModel
-                    (await context.Claims.FirstAsync(x => x.Id == claims[count]), protector);
+                var claim = await context.Claims
+                    .FirstAsync(x => x.Type == claims[count].ClaimType && x.Value == claims[count].ClaimValue)
+                    .ConfigureAwait(false);
+
+                claimsView[count] = new ClaimsViewModel(claim, protector);
                 count++;
             }
 
             return claimsView;
+        }
+
+        public static Task<bool> HasClaimAsync(this IdentityContext context, string name, string value, string id)
+        {
+            return context.UserClaims.AnyAsync(x => x.ClaimType == name
+                                               && x.ClaimValue == value && x.UserId == id);
         }
     }
 }

@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.DataProtection;
+﻿using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace ERP.Models.ViewModel.Roles
 {
     public class RolesViewModel
     {
+        [Required]
+        [StringLength(maximumLength: 176, MinimumLength = 176)]
         public string Id { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
         public RolesViewModel()

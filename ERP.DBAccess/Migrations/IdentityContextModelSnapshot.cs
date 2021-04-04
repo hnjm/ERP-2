@@ -4,7 +4,6 @@ using ERP.DBAccess.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ERP.DBAccess.Migrations
 {
@@ -24,7 +23,7 @@ namespace ERP.DBAccess.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(36)");
 
-                    b.Property<string>("Type")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)");
 

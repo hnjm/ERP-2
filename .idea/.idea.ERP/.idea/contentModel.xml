@@ -8,7 +8,14 @@
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
-        <e p="Controllers" t="Include" />
+        <e p="Controllers" t="Include">
+          <e p="AccountController.cs" t="Include" />
+          <e p="ClaimsController.cs" t="Include" />
+          <e p="RolesController.cs" t="Include" />
+          <e p="UsersClaimManagerController.cs" t="Include" />
+          <e p="UsersController.cs" t="Include" />
+          <e p="UsersRoleManagerController.cs" t="Include" />
+        </e>
         <e p="ERP.csproj" t="IncludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
@@ -26,9 +33,37 @@
         <e p="Views" t="Include">
           <e p="_ViewImports.cshtml" t="Include" />
           <e p="_ViewStart.cshtml" t="Include" />
+          <e p="Account" t="Include">
+            <e p="AccessDenied.cshtml" t="Include" />
+            <e p="Login.cshtml" t="Include" />
+          </e>
+          <e p="Claims" t="Include">
+            <e p="Create.cshtml" t="Include" />
+            <e p="Details.cshtml" t="Include" />
+            <e p="Edit.cshtml" t="Include" />
+            <e p="GetClaims.cshtml" t="Include" />
+          </e>
+          <e p="Roles" t="Include">
+            <e p="Create.cshtml" t="Include" />
+            <e p="Details.cshtml" t="Include" />
+            <e p="Edit.cshtml" t="Include" />
+            <e p="GetRoles.cshtml" t="Include" />
+          </e>
           <e p="Shared" t="Include">
             <e p="_Layout.cshtml" t="Include" />
             <e p="_ValidationScriptsPartial.cshtml" t="Include" />
+          </e>
+          <e p="Users" t="Include">
+            <e p="Create.cshtml" t="Include" />
+            <e p="Details.cshtml" t="Include" />
+            <e p="Edit.cshtml" t="Include" />
+            <e p="GetUsers.cshtml" t="Include" />
+          </e>
+          <e p="UsersClaimManager" t="Include">
+            <e p="ManageUserClaim.cshtml" t="Include" />
+          </e>
+          <e p="UsersRoleManager" t="Include">
+            <e p="ManageUserRole.cshtml" t="Include" />
           </e>
         </e>
         <e p="wwwroot" t="Include">
@@ -91,6 +126,81 @@
               <e p="jquery.validate.unobtrusive.min.js" t="Include" />
               <e p="LICENSE.txt" t="Include" />
             </e>
+          </e>
+        </e>
+      </e>
+      <e p="ERP.DBAccess" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Context" t="Include">
+          <e p="AppContext.cs" t="Include" />
+          <e p="IdentityContext.cs" t="Include" />
+        </e>
+        <e p="ERP.DBAccess.csproj" t="IncludeRecursive" />
+        <e p="Migrations" t="Include">
+          <e p="20210401160553_IdentitySetup.cs" t="Include" />
+          <e p="20210401160553_IdentitySetup.Designer.cs" t="Include" />
+          <e p="IdentityContextModelSnapshot.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="net5.0" t="Include">
+              <e p="ERP.DBAccess.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="ERP.Helper" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="ERP.Helper.csproj" t="IncludeRecursive" />
+        <e p="ExtensionMethod" t="Include">
+          <e p="UsersExtension.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="net5.0" t="Include">
+              <e p="ERP.Helper.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="ServiceProvider" t="Include">
+          <e p="ContextInstaller.cs" t="Include" />
+          <e p="IdentityInstaller.cs" t="Include" />
+          <e p="IServiceProvider.cs" t="Include" />
+          <e p="MvcGlobalAuthInstaller.cs" t="Include" />
+          <e p="ValueProvider.cs" t="Include" />
+        </e>
+      </e>
+      <e p="ERP.Models" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="DBModels" t="Include">
+          <e p="Claim" t="Include">
+            <e p="ClaimDbModel.cs" t="Include" />
+          </e>
+        </e>
+        <e p="ERP.Models.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="net5.0" t="Include">
+              <e p="ERP.Models.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="ViewModel" t="Include">
+          <e p="Claims" t="Include">
+            <e p="ClaimCreateModel.cs" t="Include" />
+            <e p="ClaimsViewModel.cs" t="Include" />
+            <e p="SelectUserForClaimModel.cs" t="Include" />
+          </e>
+          <e p="Roles" t="Include">
+            <e p="RolesViewModel.cs" t="Include" />
+            <e p="SelectUserForRoleModel.cs" t="Include" />
+          </e>
+          <e p="Users" t="Include">
+            <e p="UserCreateViewModel.cs" t="Include" />
+            <e p="UserLoginView.cs" t="Include" />
+            <e p="UsersDetailsViewModel.cs" t="Include" />
+            <e p="UsersEditViewModel.cs" t="Include" />
+            <e p="UsersViewModel.cs" t="Include" />
           </e>
         </e>
       </e>

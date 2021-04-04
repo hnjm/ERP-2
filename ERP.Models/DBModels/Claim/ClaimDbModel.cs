@@ -5,6 +5,7 @@ namespace ERP.Models.DBModels.Claim
     public class ClaimDbModel
     {
         [Key]
+        [StringLength(maximumLength: 176, MinimumLength = 176)]
         public string Id { get; set; }
 
         [Required]

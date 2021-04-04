@@ -7,8 +7,6 @@ namespace ERP.Models.ViewModel.Roles
     {
         public bool IsSelected { get; set; }
 
-        public string? Id { get; set; }
-
         public string Name { get; set; }
 
         public SelectUserForRoleModel()
@@ -16,9 +14,8 @@ namespace ERP.Models.ViewModel.Roles
 
         }
 
-        public SelectUserForRoleModel(IdentityRole role, IDataProtector protector)
+        public SelectUserForRoleModel(IdentityRole role)
         {
-            Id = protector.Protect(role.Id);
             Name = role.Name;
         }
     }

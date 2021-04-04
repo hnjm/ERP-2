@@ -2,6 +2,16 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
+        <Nullable>annotations</Nullable>
     </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="5.0.4" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ERP.DBAccess\ERP.DBAccess.csproj" />
+      <ProjectReference Include="..\ERP.Models\ERP.Models.csproj" />
+    </ItemGroup>
 
 </Project>

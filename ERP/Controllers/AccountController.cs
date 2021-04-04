@@ -7,12 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 namespace ERP.Controllers
 {
     [AllowAnonymous]
-    public class AuthenticationController : Controller
+    public class AccountController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
 
-        public AuthenticationController(UserManager<IdentityUser> userManager,
+        public AccountController(UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager)
         {
             _userManager = userManager;
@@ -34,7 +34,8 @@ namespace ERP.Controllers
             var user = await _userManager.FindByNameAsync(model.UserName)
                 .ConfigureAwait(false);
 
-            if (user is null | await _userManager.CheckPasswordAsync(user, model.Password).ConfigureAwait(false))
+            if (user is null | !await _userManager.CheckPasswordAsync(user, model.Password)
+                .ConfigureAwait(false))
             {
                 ModelState.AddModelError("", "Invalid Name or Password");
                 return View();
@@ -43,9 +44,9 @@ namespace ERP.Controllers
             await _signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe, true)
                 .ConfigureAwait(false);
 
-            return LocalRedirect("~");
+            return RedirectToAction("GetUsers", "Users");
         }
-        
+
         [Authorize]
         public IActionResult AccessDenied()
         {

@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace ERP.Helper.ServiceProvider
 {
-    public class ValueProvider:IServiceProvider
+    public class ValueProvider : IServiceProvider
     {
         public void Configure(IServiceCollection services, IConfiguration configuration)
         {

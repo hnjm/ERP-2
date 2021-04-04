@@ -1,6 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.DataProtection;
+﻿using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace ERP.Models.ViewModel.Users
 {
@@ -17,6 +17,8 @@ namespace ERP.Models.ViewModel.Users
         [Required]
         public string Email { get; set; }
 
+        public bool IsVerified { get; set; }
+
         public UsersEditViewModel()
         {
 
@@ -27,6 +29,7 @@ namespace ERP.Models.ViewModel.Users
             Id = protector.Protect(user.Id);
             Name = user.UserName;
             Email = user.Email;
+            IsVerified = user.EmailConfirmed;
         }
     }
 }

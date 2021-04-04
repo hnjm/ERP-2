@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ERP.Models.DBModels.Claim;
+﻿using ERP.Models.DBModels.Claim;
 using Microsoft.AspNetCore.DataProtection;
+using System.ComponentModel.DataAnnotations;
 
 namespace ERP.Models.ViewModel.Claims
 {
@@ -12,8 +8,10 @@ namespace ERP.Models.ViewModel.Claims
     {
         public string Id { get; set; }
 
+        [Required]
         public string Type { get; set; }
 
+        [Required]
         public string Value { get; set; }
 
         public ClaimsViewModel()
